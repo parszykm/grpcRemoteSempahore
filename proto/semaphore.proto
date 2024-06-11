@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package semaphore;
+
+option go_package = "./semaphore";
+
+service Semaphore {
+    rpc Acquire(AcquireRequest) returns (AcquireResponse);
+    rpc Release(ReleaseRequest) returns (ReleaseResponse);
+}
+
+message AcquireRequest {
+    int32 permits = 1;
+}
+
+message AcquireResponse {
+    bool success = 1;
+}
+
+message ReleaseRequest {
+    int32 permits = 1;
+}
+
+message ReleaseResponse {
+    bool success = 1;
+}
